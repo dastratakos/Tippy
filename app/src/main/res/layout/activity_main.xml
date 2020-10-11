@@ -183,34 +183,6 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tvPerPerson"
         app:layout_constraintStart_toEndOf="@+id/tvPerPerson" />
 
-    <!-- Views on far right side-->
-
-    <TextView
-        android:id="@+id/tvTipPercent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="15%"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/etBase"
-        app:layout_constraintTop_toBottomOf="@+id/tvBaseLabel" />
-
-    <TextView
-        android:id="@+id/tvSplit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="1"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/etBase"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalLabel" />
-
-    <!-- Footer views -->
-
     <RelativeLayout
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -242,6 +214,65 @@
             android:src="@drawable/ic_baseline_arrow_drop_down_24" />
 
     </RelativeLayout>
+
+    <!-- Views on far right side-->
+
+    <TextView
+        android:id="@+id/tvTipPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="15%"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/etBase"
+        app:layout_constraintTop_toBottomOf="@+id/tvBaseLabel" />
+
+    <TextView
+        android:id="@+id/tvSplit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/etBase"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalLabel" />
+
+    <!-- Footer views -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tvFooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:onClick="savePayment"
+            android:text="Save Payment"
+            app:layout_constraintBottom_toTopOf="@+id/tvFooter"
+            tools:layout_editor_absoluteX="15dp" />
+
+        <Button
+            android:id="@+id/btHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:onClick="viewHistory"
+            android:text="View History"
+            app:layout_constraintBottom_toTopOf="@+id/tvFooter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvFooter"

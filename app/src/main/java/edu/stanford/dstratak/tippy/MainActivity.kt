@@ -1,24 +1,37 @@
 package edu.stanford.dstratak.tippy
 
-//import android.R
 import android.animation.ArgbEvaluator
+import android.content.Intent
+import android.icu.util.Currency
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SeekBar
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.NumberFormat
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
+import edu.stanford.dstratak.tippy.Payment as Payment
 
 
 private const val TAG = "MainActivity"
 private const val INITIAL_TIP_PERCENT = 15
 private const val INITIAL_SPLIT = 1
+@RequiresApi(Build.VERSION_CODES.N)
+private var DEFAULT_CURRENCY = Currency.getInstance(Locale.getDefault()).currencyCode
+private var payments = mutableListOf<Payment>()
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,15 +42,15 @@ class MainActivity : AppCompatActivity() {
         tvSplit.text = "$INITIAL_SPLIT"
         seekBarSplit.progress = INITIAL_SPLIT - 1
         var dollarString: String = ""
-        var round: Boolean = false
         var oldTip = INITIAL_TIP_PERCENT
+        val nf = NumberFormat.getCurrencyInstance(Locale.getDefault())
 
         seekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.i(TAG, "onProgressChanged (seekBarTip) $progress")
                 tvTipPercent.text = "$progress%"
                 updateTipDescription(progress)
-                computeValues(round, seekBarTip.progress)
+                computeValues(seekBarTip.progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -52,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "onProgressChanged (seekBarSplit) $progress")
                 val adjustedProgress = progress + 1
                 tvSplit.text = "$adjustedProgress"
-                computeValues(round, seekBarTip.progress)
+                computeValues(seekBarTip.progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -82,22 +95,17 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 Log.i(TAG, "afterTextChanged $s")
                 sRoundUp.isChecked = false
-                computeValues(round, seekBarTip.progress)
+                computeValues(seekBarTip.progress)
             }
         })
 
         sRoundUp.setOnCheckedChangeListener { _, isChecked ->
-            round = isChecked
-            if (round) {
-                oldTip = seekBarTip.progress
-                computeValues(round, oldTip)
-            } else {
-                computeValues(round, oldTip)
-            }
+            if (isChecked) oldTip = seekBarTip.progress
+            computeValues(oldTip)
         }
 
         // Spinner click listener
-        spinner.setOnItemSelectedListener(object: AdapterView.OnItemSelectedListener {
+        spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -105,10 +113,15 @@ class MainActivity : AppCompatActivity() {
                 id: Long
             ) {
                 Log.i(TAG, "position: $position, id: $id")
+                // https://stackoverflow.com/questions/23985167/android-save-selected-currency-in-sharedpreference
+//                nf.setCurrency(Currency.getInstance(position));
+//                val sharedPrefs = getSharedPreferences("currency", MODE_PRIVATE)
+//                sharedPrefs.edit().putString("code", nf.currency.currencyCode).apply()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // TODO
+//                val sharedPrefs: SharedPreferences = getSharedPreferences("currency", MODE_PRIVATE)
+//                nf.setCurrency(sharedPrefs.getString("code", DEFAULT_CURRENCY))
             }
 
         })
@@ -150,7 +163,7 @@ class MainActivity : AppCompatActivity() {
         tvTipDescription.setTextColor(color)
     }
 
-    private fun computeValues(round: Boolean, tip: Int) {
+    private fun computeValues(tip: Int) {
         // Get the value of the base and tip percent
         if (etBase.text.toString() == "$0.00") {
             tvTipAmount.text = "$0.00"
@@ -164,7 +177,7 @@ class MainActivity : AppCompatActivity() {
         var tipAmount = baseAmount * tipPercent / 100
         var totalAmount = baseAmount + tipAmount
 
-        if (round) {
+        if (sRoundUp.isChecked) {
             totalAmount = kotlin.math.ceil(totalAmount)
             tipAmount = totalAmount - baseAmount
             tipPercent = (tipAmount / baseAmount * 100).toInt()
@@ -183,4 +196,26 @@ class MainActivity : AppCompatActivity() {
         return NumberFormat.getCurrencyInstance().format((input))
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun savePayment(view: View) {
+        val payment = Payment(
+            baseAmount = etBase.text.toString(),
+            tipPercent = seekBarTip.progress,
+            tipAmount = tvTipAmount.text.toString(),
+            totalAmount = tvTotalAmount.text.toString(),
+            round = sRoundUp.isChecked,
+            split = seekBarSplit.progress + 1,
+            perPersonAmount = tvPerPersonAmount.text.toString(),
+            currency = Currency.getInstance(Locale.US),
+            date = LocalDateTime.now()
+        )
+        Log.i(TAG, "savePayment $payment")
+        payments.add(0, payment)
+    }
+
+    fun viewHistory(view: View) {
+        Log.i(TAG, "viewHistory")
+        val intent = Intent(this, HistoryActivity::class.java).putParcelableArrayListExtra("payments", ArrayList(payments))
+        startActivity(intent)
+    }
 }
