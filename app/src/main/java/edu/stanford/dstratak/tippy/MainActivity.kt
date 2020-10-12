@@ -1,6 +1,7 @@
 package edu.stanford.dstratak.tippy
 
 import android.animation.ArgbEvaluator
+import android.content.Context
 import android.content.Intent
 import android.icu.util.Currency
 import android.os.Build
@@ -9,8 +10,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.view.inputmethod.InputMethodManager
 import android.widget.SeekBar
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -26,8 +26,6 @@ import edu.stanford.dstratak.tippy.Payment as Payment
 private const val TAG = "MainActivity"
 private const val INITIAL_TIP_PERCENT = 15
 private const val INITIAL_SPLIT = 1
-@RequiresApi(Build.VERSION_CODES.N)
-private var DEFAULT_CURRENCY = Currency.getInstance(Locale.getDefault()).currencyCode
 private var payments = mutableListOf<Payment>()
 
 class MainActivity : AppCompatActivity() {
@@ -43,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         seekBarSplit.progress = INITIAL_SPLIT - 1
         var dollarString: String = ""
         var oldTip = INITIAL_TIP_PERCENT
-        val nf = NumberFormat.getCurrencyInstance(Locale.getDefault())
 
         seekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -54,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                closeKeyBoard()
                 sRoundUp.isChecked = false
             }
 
@@ -68,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 computeValues(seekBarTip.progress)
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStartTrackingTouch(seekBar: SeekBar?) { closeKeyBoard() }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
@@ -103,46 +101,6 @@ class MainActivity : AppCompatActivity() {
             if (isChecked) oldTip = seekBarTip.progress
             computeValues(oldTip)
         }
-
-        // Spinner click listener
-        spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                Log.i(TAG, "position: $position, id: $id")
-                // https://stackoverflow.com/questions/23985167/android-save-selected-currency-in-sharedpreference
-//                nf.setCurrency(Currency.getInstance(position));
-//                val sharedPrefs = getSharedPreferences("currency", MODE_PRIVATE)
-//                sharedPrefs.edit().putString("code", nf.currency.currencyCode).apply()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                val sharedPrefs: SharedPreferences = getSharedPreferences("currency", MODE_PRIVATE)
-//                nf.setCurrency(sharedPrefs.getString("code", DEFAULT_CURRENCY))
-            }
-
-        })
-
-        // Spinner Drop down elements
-        val currencies: MutableList<String> = ArrayList()
-        currencies.add("USD ($)")
-        currencies.add("EUR (€)")
-        currencies.add("GBP (£)")
-        currencies.add("JPY (¥)")
-        currencies.add("CAD (C$)")
-        currencies.add("CHF (Fr.)")
-
-        // Creating adapter for spinner
-        val dataAdapter = ArrayAdapter(this, R.layout.spinner_item, currencies)
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-
-        // attaching data adapter to spinner
-        spinner.adapter = dataAdapter
 
     }
 
@@ -206,7 +164,6 @@ class MainActivity : AppCompatActivity() {
             round = sRoundUp.isChecked,
             split = seekBarSplit.progress + 1,
             perPersonAmount = tvPerPersonAmount.text.toString(),
-            currency = Currency.getInstance(Locale.US),
             date = LocalDateTime.now()
         )
         Log.i(TAG, "savePayment $payment")
@@ -217,5 +174,13 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "viewHistory")
         val intent = Intent(this, HistoryActivity::class.java).putParcelableArrayListExtra("payments", ArrayList(payments))
         startActivity(intent)
+    }
+
+    private fun closeKeyBoard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }

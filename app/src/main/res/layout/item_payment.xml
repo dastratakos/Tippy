@@ -6,6 +6,18 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/tvPaymentPerPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$123.45" />
+
+    <TextView
         android:id="@+id/tvPaymentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,19 +27,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="10/10/20, 5:38pm" />
-
-    <TextView
-        android:id="@+id/tvPaymentPerPerson"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="$123.45"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:text="Sun, 10/10/20 at 5:38pm" />
 
     <TextView
         android:id="@+id/tvPaymentCalculation"

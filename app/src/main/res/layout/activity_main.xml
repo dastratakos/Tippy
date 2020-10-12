@@ -38,7 +38,6 @@
         android:text="Tip %"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/tvPerPerson"
         app:layout_constraintTop_toBottomOf="@+id/tvBaseLabel" />
 
@@ -46,7 +45,7 @@
         android:id="@+id/sRoundUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="round"
+        android:text="Round "
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:theme="@style/SelectionSwitch"
@@ -87,17 +86,6 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSplitLabel" />
-
-    <TextView
-        android:id="@+id/tvCurrencyLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Currency"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/tvPerPerson"
-        app:layout_constraintEnd_toEndOf="@id/tvPerPerson" />
 
     <!-- Views on the right side -->
 
@@ -182,38 +170,6 @@
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@id/tvPerPerson"
         app:layout_constraintStart_toEndOf="@+id/tvPerPerson" />
-
-    <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:background="@drawable/bg_spinner"
-        android:orientation="horizontal"
-        android:theme="@style/SelectionSwitch"
-        app:layout_constraintBottom_toBottomOf="@id/tvCurrencyLabel"
-        app:layout_constraintStart_toEndOf="@id/tvCurrencyLabel"
-        app:layout_constraintTop_toTopOf="@id/tvCurrencyLabel">
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:background="@android:color/transparent"
-            android:gravity="center"
-            android:spinnerMode="dropdown" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_arrow_drop_down_24" />
-
-    </RelativeLayout>
 
     <!-- Views on far right side-->
 

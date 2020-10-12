@@ -2,6 +2,7 @@ package edu.stanford.dstratak.tippy
 
 import android.content.Context
 import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,11 +31,21 @@ class PaymentAdapter(private val context: Context, private val payments: ArrayLi
         fun bind(payment: Payment) {
             itemView.tvPaymentPerPerson.text = payment.perPersonAmount
 
-            val formatter = DateTimeFormatter.ofPattern("EEE, MMM d, yyyy 'at' h:mm:ss a")
+            val formatter = DateTimeFormatter.ofPattern("EEE, M/d/yy 'at' h:mm a")
             val formatted = payment.date.format(formatter)
             itemView.tvPaymentDate.text = formatted
 
-            itemView.tvPaymentCalculation.text = "[${payment.baseAmount} + ${payment.tipAmount} (${payment.tipPercent}%)] / ${payment.split} = ${payment.perPersonAmount}"
+            val baseText = formatText("Base", payment.baseAmount)
+            val tipText = formatText("Tip", payment.tipAmount) + "(${payment.tipPercent}%)"
+            val splitText = formatText("Split", payment.split.toString())
+            val perPersonText = formatText("Per Person", payment.perPersonAmount)
+            val text = "$baseText, $tipText, $splitText, $perPersonText"
+            itemView.tvPaymentCalculation.text = Html.fromHtml(text)
         }
+
+        private fun formatText(description: String, value: String): String {
+            return "<font color='#858585'>$description:</font> $value"
+        }
+
     }
 }

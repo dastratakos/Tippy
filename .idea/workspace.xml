@@ -11,12 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bf99165-c8f1-40ef-a95b-156b2c0e5f06" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/HistoryActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/Payment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/PaymentAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_payment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -25,19 +19,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/Payment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/Payment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/PaymentAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/stanford/dstratak/tippy/PaymentAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_payment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_payment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,59 +213,67 @@
       <option name="project" value="LOCAL" />
       <updated>1602320050908</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implement history feature.&#10;&#10;Added support for the user to save payments within a current session and view their&#10;history. Clicking the View History button transitions to a new HistoryActivity, which&#10;contains a RecyclerView widget to display all of the transactions in a scrolling view.&#10;However, this implementation is limited in that the data is not persistent over time.">
+      <created>1602398875040</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602398875040</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add modifications.&#10;&#10;Added a split feature that allows the user to split the total evenly among 1-15 people.&#10;Added a round up feature that allows the user to round up the total to the nearest&#10;dollar. This will update the tip and tip % automatically while keeping the base amount.&#10;When the toggle is switched back to off, the old tip % will be remembered and restored.&#10;Began working on a currency feature. Currently have a Spinner menu in place that can&#10;switch between 6 different currencies, but it has no effect on the numbers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add modifications.&#10;&#10;Added a split feature that allows the user to split the total evenly among 1-15 people.&#10;Added a round up feature that allows the user to round up the total to the nearest&#10;dollar. This will update the tip and tip % automatically while keeping the base amount.&#10;When the toggle is switched back to off, the old tip % will be remembered and restored.&#10;Began working on a currency feature. Currently have a Spinner menu in place that can&#10;switch between 6 different currencies, but it has no effect on the numbers." />
+    <MESSAGE value="Implement history feature.&#10;&#10;Added support for the user to save payments within a current session and view their&#10;history. Clicking the View History button transitions to a new HistoryActivity, which&#10;contains a RecyclerView widget to display all of the transactions in a scrolling view.&#10;However, this implementation is limited in that the data is not persistent over time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement history feature.&#10;&#10;Added support for the user to save payments within a current session and view their&#10;history. Clicking the View History button transitions to a new HistoryActivity, which&#10;contains a RecyclerView widget to display all of the transactions in a scrolling view.&#10;However, this implementation is limited in that the data is not persistent over time." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="562" y="81" key="#com.intellij.ide.util.MemberChooser" timestamp="1602376886138">
+    <state x="562" y="81" key="#com.intellij.ide.util.MemberChooser" timestamp="1602483285518">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="562" y="81" key="#com.intellij.ide.util.MemberChooser/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602376886138" />
+    <state x="562" y="81" key="#com.intellij.ide.util.MemberChooser/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602483285518" />
     <state x="562" y="81" key="#com.intellij.ide.util.MemberChooser/0.25.1680.1025@0.25.1680.1025" timestamp="1601919756628" />
     <state x="428" y="296" key="AndroidCreateResourceFileDialog" timestamp="1602376457651">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="428" y="296" key="AndroidCreateResourceFileDialog/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602376457651" />
-    <state x="359" y="123" key="CommitChangelistDialog2" timestamp="1602320050646">
+    <state x="359" y="123" key="CommitChangelistDialog2" timestamp="1602398874797">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="359" y="123" key="CommitChangelistDialog2/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602320050646" />
-    <state width="1638" height="234" key="GridCell.Tab.0.bottom" timestamp="1602396193427">
+    <state x="359" y="123" key="CommitChangelistDialog2/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602398874797" />
+    <state width="1638" height="234" key="GridCell.Tab.0.bottom" timestamp="1602479237378">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="222" key="GridCell.Tab.0.bottom/-1288.35.1288.946/0.0.1680.1050@0.0.1680.1050" timestamp="1602301199863" />
     <state width="1638" height="294" key="GridCell.Tab.0.bottom/-1288.60.1288.921/0.0.1680.1050@0.0.1680.1050" timestamp="1602301327770" />
-    <state width="1638" height="234" key="GridCell.Tab.0.bottom/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602396193427" />
+    <state width="1638" height="234" key="GridCell.Tab.0.bottom/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602479237378" />
     <state width="1638" height="235" key="GridCell.Tab.0.bottom/0.25.1680.1025@0.25.1680.1025" timestamp="1601922061064" />
-    <state width="1638" height="234" key="GridCell.Tab.0.center" timestamp="1602396193426">
+    <state width="1638" height="234" key="GridCell.Tab.0.center" timestamp="1602479237377">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="222" key="GridCell.Tab.0.center/-1288.35.1288.946/0.0.1680.1050@0.0.1680.1050" timestamp="1602301199862" />
     <state width="1638" height="294" key="GridCell.Tab.0.center/-1288.60.1288.921/0.0.1680.1050@0.0.1680.1050" timestamp="1602301327769" />
-    <state width="1638" height="234" key="GridCell.Tab.0.center/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602396193426" />
+    <state width="1638" height="234" key="GridCell.Tab.0.center/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602479237377" />
     <state width="1638" height="235" key="GridCell.Tab.0.center/0.25.1680.1025@0.25.1680.1025" timestamp="1601922061064" />
-    <state width="1638" height="234" key="GridCell.Tab.0.left" timestamp="1602396193425">
+    <state width="1638" height="234" key="GridCell.Tab.0.left" timestamp="1602479237377">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="222" key="GridCell.Tab.0.left/-1288.35.1288.946/0.0.1680.1050@0.0.1680.1050" timestamp="1602301199861" />
     <state width="1638" height="294" key="GridCell.Tab.0.left/-1288.60.1288.921/0.0.1680.1050@0.0.1680.1050" timestamp="1602301327768" />
-    <state width="1638" height="234" key="GridCell.Tab.0.left/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602396193425" />
+    <state width="1638" height="234" key="GridCell.Tab.0.left/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602479237377" />
     <state width="1638" height="235" key="GridCell.Tab.0.left/0.25.1680.1025@0.25.1680.1025" timestamp="1601922061063" />
-    <state width="1638" height="234" key="GridCell.Tab.0.right" timestamp="1602396193427">
+    <state width="1638" height="234" key="GridCell.Tab.0.right" timestamp="1602479237378">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="222" key="GridCell.Tab.0.right/-1288.35.1288.946/0.0.1680.1050@0.0.1680.1050" timestamp="1602301199863" />
     <state width="1638" height="294" key="GridCell.Tab.0.right/-1288.60.1288.921/0.0.1680.1050@0.0.1680.1050" timestamp="1602301327769" />
-    <state width="1638" height="234" key="GridCell.Tab.0.right/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602396193427" />
+    <state width="1638" height="234" key="GridCell.Tab.0.right/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602479237377" />
     <state width="1638" height="235" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1601922061064" />
-    <state x="220" y="274" key="Vcs.Push.Dialog.v2" timestamp="1602320062809">
+    <state x="220" y="274" key="Vcs.Push.Dialog.v2" timestamp="1602398883581">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="220" y="274" key="Vcs.Push.Dialog.v2/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602320062809" />
+    <state x="220" y="274" key="Vcs.Push.Dialog.v2/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602398883581" />
     <state x="220" y="274" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1601934281955" />
     <state x="99" y="100" width="1480" height="850" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1602301918824">
       <screen x="0" y="0" width="1680" height="1050" />
@@ -296,14 +293,14 @@
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="620" y="458" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602315574696" />
-    <state x="602" y="171" key="refactoring.ChangeSignatureDialog" timestamp="1602396769155">
+    <state x="602" y="171" key="refactoring.ChangeSignatureDialog" timestamp="1602477838517">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="602" y="171" key="refactoring.ChangeSignatureDialog/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602396769155" />
-    <state x="505" y="252" width="670" height="676" key="search.everywhere.popup" timestamp="1602397775178">
+    <state x="602" y="171" key="refactoring.ChangeSignatureDialog/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602477838517" />
+    <state x="505" y="252" width="670" height="676" key="search.everywhere.popup" timestamp="1602480027714">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="505" y="252" width="670" height="676" key="search.everywhere.popup/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602397775178" />
+    <state x="505" y="252" width="670" height="676" key="search.everywhere.popup/-1288.60.1288.921/0.25.1680.1025@0.25.1680.1025" timestamp="1602480027714" />
     <state x="505" y="252" width="670" height="676" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1601921830702" />
   </component>
 </project>

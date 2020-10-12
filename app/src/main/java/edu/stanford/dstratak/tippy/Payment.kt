@@ -1,6 +1,5 @@
 package edu.stanford.dstratak.tippy
 
-import android.icu.util.Currency
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import java.time.LocalDateTime
@@ -14,6 +13,5 @@ data class Payment(
     val round: Boolean,
     val split: Int,
     val perPersonAmount: String,
-    val currency: Currency,
     val date: LocalDateTime
 ) : Parcelable
