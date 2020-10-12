@@ -42,7 +42,7 @@ The main challenges when building this app occurred when implementing the second
 
 Furthermore, I implemented a RecyclerView to display the list of payments, which presented its own set of challenges. In doing so, I created an adapter for the recycler as well as a separate .xml file to format a single view element within the list.
 
-With more time, I would implement persistence so that information could be stored indefinitely. A simple solution would be to use a local file whereas more involved solutions would use either a local SQLite or a remote Firebase database.
+With more time, I would implement persistence so that information could be stored indefinitely. A simple solution would be to use a local file whereas more involved solutions would use either a local SQLite or a remote Firebase database. I would also have a better indication of when a payment was saved either by inactivating the button and changing its color, or displaying a popup window. Lastly, I could also implement a reset button to set the inputs back to their default values.
 
 ## License
 
